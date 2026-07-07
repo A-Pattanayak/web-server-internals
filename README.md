@@ -1,86 +1,130 @@
 # Web Server From Scratch
 
-Namaste! This repository is a hands-on learning project for understanding how a web server works at the lowest level.
-
-Instead of starting with a full backend framework, this project begins with a tiny Python socket server. The goal is to understand what happens behind the scenes when a browser sends an HTTP request and a server sends back a response.
-
-## What This Project Covers
-
-- Creating a TCP socket in Python
-- Binding a server to a host and port
-- Listening for browser/client connections
-- Reading raw HTTP request data
-- Sending a basic HTTP response
-- Understanding the relationship between TCP, HTTP, URLs, clients, and servers
-
-## Current Server
-
-The main server file is:
+> A tiny Python web server built from the ground up to understand how browsers, TCP sockets, and HTTP responses work together.
 
 ```text
-webserver1.py
+Browser / Client  -->  TCP Connection  -->  Python Socket Server
+Browser / Client  <--  HTTP Response   <--  Hello, World!
 ```
 
-It starts a small HTTP server on port `8888` and returns:
+## Overview
 
-```text
-Hello, World!
-```
+Namaste! This repository is a hands-on learning project for understanding what a web server is actually doing behind the scenes.
 
-This server is intentionally simple. It does not use Flask, Django, Express, or any other web framework. That makes it easier to see the foundation clearly.
+Instead of starting with Flask, Django, Express, or any high-level framework, this project begins with a simple Python socket server. That keeps the focus on the foundation: connection, request, response, and the basic HTTP flow.
 
-## How To Run
+## Quick Facts
 
-From the project root, run:
+| Item | Details |
+| --- | --- |
+| Language | Python |
+| Main file | `webserver1.py` |
+| Server port | `8888` |
+| Current response | `Hello, World!` |
+| Frameworks used | None |
+| Purpose | Learn web server fundamentals from scratch |
+
+## What You Will Learn
+
+- How a TCP socket is created in Python
+- How a server binds to a host and port
+- How the server waits for client connections
+- What a raw HTTP request looks like
+- How a basic HTTP response is sent back
+- Why browsers, URLs, ports, TCP, and HTTP all matter
+
+## Run The Server
+
+From the project root:
 
 ```bash
 python webserver1.py
 ```
 
-Then open this URL in your browser:
+Expected terminal output:
+
+```text
+Serving HTTP on port 8888 ...
+```
+
+Now open this in your browser:
 
 ```text
 http://localhost:8888/hello
 ```
 
-You should see:
+Expected browser response:
 
 ```text
 Hello, World!
 ```
 
-You can also try other paths:
+## Try More Paths
+
+You can also open:
 
 ```text
 http://localhost:8888/about
 http://localhost:8888/api/robots
 ```
 
-The response will still be `Hello, World!` because the current server does not parse routes yet.
+The response will still be:
+
+```text
+Hello, World!
+```
+
+That is intentional. The current server reads the request, but it does not parse routes yet. This is the first step before adding real path-based responses.
 
 ## Project Structure
 
 ```text
 .
-+-- webserver1.py
 +-- README.md
++-- webserver1.py
 +-- Notes/
     +-- Note1.md
 ```
 
 ## Learning Notes
 
-The detailed beginner-friendly notes are here:
+The detailed notes live here:
 
 - [Web Server Foundations](./Notes/Note1.md)
 
-Those notes explain the core concepts step by step, including URL parts, protocol, host, port, path, TCP vs HTTP, and how this foundation connects to React apps that call backend APIs.
+These notes explain the concepts step by step, including:
 
-## Goal
+- URL parts: protocol, host, port, and path
+- TCP vs HTTP
+- Request-response flow
+- How server data later connects to frontend apps
 
-The goal of this repository is to build understanding first.
+## Current Milestone
 
-Before using high-level backend tools, this project helps answer an important question:
+```text
+[x] Create a basic TCP socket server
+[x] Accept browser connections
+[x] Print incoming HTTP request data
+[x] Send a simple HTTP response
+[ ] Parse the request path
+[ ] Return different responses for different routes
+[ ] Serve HTML content
+```
+
+## Mental Model
+
+```text
+URL tells the browser where to go.
+TCP creates the connection.
+HTTP defines the message format.
+The server receives the request.
+The server sends back a response.
+The browser displays the response body.
+```
+
+## Why This Exists
+
+Before using powerful backend frameworks, this repo focuses on one very important question:
 
 ```text
 What is a web server actually doing under the hood?
